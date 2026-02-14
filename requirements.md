@@ -1,8 +1,11 @@
-# Requirements Document
+# Requirements Document: Swaasthya Sathi
+
+## Feature Name
+Swaasthya Sathi - India-First Health Intelligence Platform
 
 ## Introduction
 
-Aahaar-Parakh is an "India-First" health intelligence platform that serves as a "Personalized AI Nutritionist & Safety Guardian" designed for the Indian population. Unlike generic calorie counters or label scanners, it uses Generative AI through Amazon Bedrock to map food and cosmetic ingredients to a user's Bio-Individual Health Profile (e.g., Diabetes, Hypertension, Skin Sensitivity), providing personalized safety verdicts in vernacular Indian languages.
+Swaasthya Sathi is an "India-First" health intelligence platform that serves as a "Personalized AI Nutritionist & Safety Guardian" designed for the Indian population. Unlike generic calorie counters or label scanners, it uses Generative AI through Amazon Bedrock to map food and cosmetic ingredients to a user's Bio-Individual Health Profile (e.g., Diabetes, Hypertension, Skin Sensitivity), providing personalized safety verdicts in vernacular Indian languages.
 
 The platform addresses the critical gap between generic health advice and personalized health intelligence, recognizing that a "Healthy High-Protein Bar" may be dangerous for a kidney patient while being beneficial for a gym enthusiast.
 
@@ -59,17 +62,64 @@ The platform addresses the critical gap between generic health advice and person
 
 ## Glossary
 
-- **System**: The Aahaar-Parakh application
-- **Health_Passport**: User's comprehensive bio-individual health profile including conditions, allergies, and dietary restrictions
-- **Bio_Individual_Score**: Dynamic safety score (0-100) calculated based on user's unique health profile
-- **Hidden_Enemy**: Ingredients with complex chemical names that mask common harmful substances
-- **E_Code**: European food additive numbering system (e.g., E621 for MSG)
-- **Agentic_Multimodal_Scanning**: AI-powered combination of computer vision and reasoning for comprehensive product analysis
-- **Audio_Advisory**: Text-to-speech component for vernacular language warnings ("Suniye" feature)
-- **PWA**: Progressive Web Application for offline-first mobile experience
-- **Health_Washing**: Marketing practice of making products appear healthier than they actually are
-- **Vernacular_Accessibility**: Multi-language support for regional Indian languages
-- **Tier_3_Connectivity**: Network conditions typical in smaller Indian cities with intermittent internet
+**System**: The Swaasthya Sathi application
+
+**Health_Passport**: User's comprehensive bio-individual health profile including conditions, allergies, and dietary restrictions
+
+**Bio_Individual_Score**: Dynamic safety score (0-100) calculated based on user's unique health profile
+
+**Hidden_Enemy**: Ingredients with complex chemical names that mask common harmful substances
+
+**E_Code**: European food additive numbering system (e.g., E621 for MSG)
+
+**Agentic_Multimodal_Scanning**: AI-powered combination of computer vision and reasoning for comprehensive product analysis
+
+**Audio_Advisory**: Text-to-speech component for vernacular language warnings ("Suniye" feature)
+
+**PWA**: Progressive Web Application for offline-first mobile experience
+
+**Health_Washing**: Marketing practice of making products appear healthier than they actually are
+
+**Vernacular_Accessibility**: Multi-language support for regional Indian languages
+
+**Tier_3_Connectivity**: Network conditions typical in smaller Indian cities with intermittent internet
+
+## Success Metrics
+
+**User Adoption Metrics**:
+- Target 100,000 active users within first 6 months of launch
+- 70% user retention rate after first month
+- Average 5+ product scans per user per week
+
+**Accuracy Metrics**:
+- 95%+ OCR accuracy for ingredient text extraction
+- 90%+ user satisfaction with bio-individual scoring relevance
+- 85%+ accuracy in hidden ingredient detection
+
+**Performance Metrics**:
+- Sub-10 second analysis time for 95% of scans
+- 99.5% uptime during peak usage hours
+- Offline functionality for 100% of previously scanned products
+
+**Health Impact Metrics**:
+- 60%+ users report making healthier purchasing decisions
+- 40%+ users with chronic conditions report better health management
+- Measurable reduction in consumption of harmful ingredients among active users
+
+## Out of Scope
+
+The following items are explicitly out of scope for the initial release:
+
+- Medical diagnosis or treatment recommendations
+- Prescription medication analysis or drug interactions
+- Restaurant menu analysis or dining recommendations
+- Nutritional meal planning or calorie tracking features
+- Social features like product reviews or community forums
+- E-commerce integration or product purchasing capabilities
+- Wearable device integration or health metric tracking
+- Recipe suggestions or cooking instructions
+- Barcode-based product lookup (focus is on ingredient analysis)
+- International product databases (India-focused initially)
 
 ## Requirements
 
@@ -124,6 +174,7 @@ The platform addresses the critical gap between generic health advice and person
 3. WHEN detecting endocrine disruptors, THE System SHALL identify and flag ingredients like Parabens, Phthalates, and BPA
 4. WHEN harmful ingredients are detected, THE System SHALL provide clear explanations of their health risks
 5. THE System SHALL maintain an updated database of ingredient mappings and health implications
+6. THE System SHALL provide clear explanations of health risks for each detected harmful ingredient
 
 ### Requirement 5: Vernacular "Suniye" Audio Advisory
 
@@ -186,6 +237,20 @@ The platform addresses the critical gap between generic health advice and person
 4. WHEN ingredient health impacts change based on new research, THE System SHALL update recommendations accordingly
 5. THE System SHALL track ingredient database version and update history for audit purposes
 
+### Requirement 10: User Interface and Experience
+
+**User Story:** As a user, I want an intuitive and accessible interface that works seamlessly across devices, so that I can easily analyze products regardless of my technical expertise.
+
+#### Acceptance Criteria
+
+1. THE System SHALL provide a mobile-first responsive design optimized for Indian smartphone market
+2. THE System SHALL support both portrait and landscape orientations for camera scanning
+3. WHEN displaying analysis results, THE System SHALL use clear visual hierarchy with color-coded safety indicators
+4. THE System SHALL provide contextual help and tooltips for first-time users
+5. THE System SHALL support accessibility features including screen reader compatibility and high contrast mode
+6. WHEN users interact with the app, THE System SHALL provide immediate visual feedback for all actions
+7. THE System SHALL minimize the number of steps required to complete a product scan (target: 2 taps from home to results)
+
 ### Requirement 11: Offline-First PWA Architecture
 
 **User Story:** As a user in Tier-3 cities with intermittent connectivity, I want the app to work offline and sync when online, so that I can make purchasing decisions even with poor network conditions.
@@ -211,3 +276,33 @@ The platform addresses the critical gap between generic health advice and person
 4. WHEN detecting severe allergens or high-risk ingredients, THE System SHALL recommend immediate medical consultation if needed
 5. THE System SHALL maintain transparency about AI decision-making and provide sources for health claims when possible
 6. THE System SHALL comply with Indian healthcare regulations and responsible AI guidelines for health applications
+
+
+## Assumptions and Dependencies
+
+**Assumptions**:
+- Users have access to smartphones with camera capabilities (Android 8.0+ or iOS 12+)
+- Users have intermittent or consistent internet connectivity for initial setup and periodic syncing
+- Users can provide basic health information accurately during onboarding
+- Product packaging in India contains readable ingredient lists as per FSSAI regulations
+- Users understand that the app provides health intelligence, not medical diagnosis
+
+**Dependencies**:
+- AWS Services: Amazon Bedrock (Claude 3.5 Sonnet), Amazon Textract, Amazon Polly, AWS Lambda, DynamoDB, Cognito
+- FSSAI ingredient database and regulatory guidelines for Indian food products
+- Reliable ingredient health impact research and scientific literature
+- Third-party libraries for PWA functionality and offline storage
+- Indian language neural voice models availability in Amazon Polly
+- Stable AWS service availability in Indian regions
+
+**Risks and Mitigations**:
+- Risk: AI hallucination in ingredient analysis → Mitigation: Cross-validation with ingredient database and confidence scoring
+- Risk: OCR failure on poor quality images → Mitigation: Image quality guidance and manual input fallback
+- Risk: User misinterpretation of health advice → Mitigation: Clear disclaimers and medical consultation recommendations
+- Risk: Privacy concerns with health data → Mitigation: Strong encryption, transparent privacy policy, user data control
+- Risk: Network connectivity issues in Tier-3 cities → Mitigation: Offline-first architecture with intelligent caching
+- Risk: Cultural insensitivity in audio advisories → Mitigation: Native speaker validation and cultural context testing
+
+## Acceptance Criteria Summary
+
+This requirements document defines 12 major functional areas with 73 specific acceptance criteria that must be validated during testing. Each requirement includes clear user stories and measurable acceptance criteria to ensure the system meets user needs while maintaining safety, privacy, and cultural appropriateness for the Indian market.
