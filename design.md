@@ -1,8 +1,8 @@
-# Design Document: Aahaar-Parakh
+# Design Document: Swaasthya Sathi
 
 ## Overview
 
-Aahaar-Parakh is an "India-First" health intelligence platform implemented as a serverless, AI-powered Progressive Web Application (PWA) that provides personalized food and cosmetic safety analysis for Indian consumers. The system leverages Amazon Bedrock's Claude 3.5 Sonnet for agentic multimodal ingredient analysis, Amazon Textract for robust OCR capabilities, and Amazon Polly for vernacular audio feedback through the "Suniye" feature.
+Swaasthya Sathi is an "India-First" health intelligence platform implemented as a serverless, AI-powered Progressive Web Application (PWA) that provides personalized food and cosmetic safety analysis for Indian consumers. The system leverages Amazon Bedrock's Claude 3.5 Sonnet for agentic multimodal ingredient analysis, Amazon Textract for robust OCR capabilities, and Amazon Polly for vernacular audio feedback through the "Suniye" feature.
 
 The architecture follows a privacy-first, offline-first serverless design using AWS Lambda for compute, DynamoDB for data persistence, and implements bio-individual scoring that adapts safety recommendations based on user health profiles. The platform addresses the critical gap between generic health advice and personalized health intelligence, recognizing that health recommendations must be contextual to individual health conditions.
 
@@ -445,7 +445,7 @@ POST /api/v1/audio/generate
 
 ### DynamoDB Single-Table Design Schema
 
-**Table Name**: `aahaar-parakh-main`
+**Table Name**: `swaasthya-sathi-main`
 **Partition Key**: `PK` (string)
 **Sort Key**: `SK` (string)
 **Global Secondary Indexes**: 
@@ -646,7 +646,7 @@ The testing strategy employs both unit testing and property-based testing to ens
 **Test Configuration**: Minimum 100 iterations per property test to ensure statistical confidence
 **Test Tagging**: Each property test must include a comment referencing its design document property
 
-Tag format: **Feature: aahaar-parakh, Property {number}: {property_text}**
+Tag format: **Feature: swaasthya-sathi, Property {number}: {property_text}**
 
 ### Testing Implementation Requirements
 
